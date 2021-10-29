@@ -110,6 +110,6 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log('Runing Genious server on port', port);
+  console.log('Runing Toursim server on port', port);
 });
 
