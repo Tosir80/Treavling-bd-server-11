@@ -41,6 +41,7 @@ async function run() {
       res.send(result);
     });
 
+  // post 
     app.post('/addedOffer', async (req, res) => {
       const data = req.body;
       const result = await addedOfferCollection.insertOne(data);
@@ -58,10 +59,10 @@ async function run() {
       res.send(result);
     });
 
-    // deleted method
+    // myorder deleted method
     app.delete('/deletemyorder/:id', async (req, res) => {
       const id = req.params.id;
-      const query = { _id: id };
+      const query = { _id: ObjectId(id) };
       const result = await addedOfferCollection.deleteOne(query);
       res.send(result);
     });
@@ -75,7 +76,7 @@ async function run() {
     // manage order delete
     app.delete('/deletemanageorder/:id', async (req, res) => {
       const id = req.params.id;
-      const query ={_id : id}
+      const query = { _id: ObjectId(id) };
       const result = await addedOfferCollection.deleteOne(query);
       res.send(result);
     });
@@ -89,7 +90,7 @@ async function run() {
 // update
 app.put('/status/:id',async(req,res)=>{
   const updatedId =req.params.id 
-  const filter ={_id: updatedId}
+  const filter = { _id: ObjectId(updatedId) };
   const result = await addedOfferCollection.updateOne(filter, {
     $set: {
       status:"Approved",
